@@ -1,7 +1,6 @@
 class BankAccount {
     constructor() {
         this.saldo = 0;
-        this.show = document.getElementById("show").textContent;
     }
 
     async deposit(amount) {
@@ -15,7 +14,7 @@ class BankAccount {
                 setTimeout(() => {
                     this.saldo += balance;
                     console.log(this.saldo);
-                    this.show = this.saldo;
+                    document.getElementById("show").innerHTML = this.saldo;
                     alert(`Setoran diterima.\nSaldo anda saat ini : ${this.saldo}`);
                 }, 1000);
             }
@@ -27,18 +26,14 @@ class BankAccount {
         if (isNaN(balance)) {
             alert('Input invalid. Mohon masukkan angka yang benar.');
         } else {
-            if (balance < 0) {
-                throw Error('Nilai harus lebih dari 0');
+            if (balance >= this.saldo) {
+                throw Error('Penarikan gagal. Saldo kurang dari 0');
             } else {
                 setTimeout(() => {
                     this.saldo -= balance;
-                    if (this.saldo < 0) {
-                        throw Error('Penarikan gagal. Saldo kurang dari 0');
-                    } else {
-                        console.log(this.saldo);
-                        this.show = this.saldo;
-                        alert(`Penarikan berhasil.\nSaldo anda saat ini : ${this.saldo}`);
-                    }
+                    console.log(this.saldo);
+                    document.getElementById("show").innerHTML = this.saldo;
+                    alert(`Penarikan berhasil.\nSaldo anda saat ini : ${this.saldo}`);
                 }, 1000);
                 
             }
