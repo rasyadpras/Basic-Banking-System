@@ -26,7 +26,7 @@ class BankAccount {
         if (isNaN(balance)) {
             alert('Input invalid. Mohon masukkan angka yang benar.');
         } else {
-            if (balance >= this.saldo) {
+            if (balance > this.saldo) {
                 throw Error('Penarikan gagal. Saldo kurang dari 0');
             } else {
                 setTimeout(() => {
