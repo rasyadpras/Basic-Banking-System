@@ -1,6 +1,7 @@
 class BankAccount {
-    constructor() {
+    constructor(date) {
         this.saldo = 0;
+        date = this.date;
     }
 
     async deposit(amount) {
@@ -15,7 +16,8 @@ class BankAccount {
                     this.saldo += balance;
                     console.log(this.saldo);
                     document.getElementById("show").innerHTML = this.saldo;
-                    alert(`Setoran diterima.\nSaldo anda saat ini : ${this.saldo}`);
+                    this.date = new Date().toString();
+                    alert(`Setoran diterima.\nSaldo anda saat ini : ${this.saldo}\nTransaction date ${this.date}`);
                 }, 1000);
             }
         }
@@ -33,7 +35,8 @@ class BankAccount {
                     this.saldo -= balance;
                     console.log(this.saldo);
                     document.getElementById("show").innerHTML = this.saldo;
-                    alert(`Penarikan berhasil.\nSaldo anda saat ini : ${this.saldo}`);
+                    this.date = new Date().toString();
+                    alert(`Penarikan berhasil.\nSaldo anda saat ini : ${this.saldo}\nTransaction date ${this.date}`);
                 }, 1000);
                 
             }
